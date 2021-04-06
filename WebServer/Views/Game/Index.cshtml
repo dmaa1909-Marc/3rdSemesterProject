@@ -1,0 +1,20 @@
+﻿@model string
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@Styles.Render("~/Content/GameStyle")
+@Styles.Render("~/Content/LobbyStyle")
+@Scripts.Render("~/bundles/game")
+@Scripts.Render("~/bundles/purify")
+
+
+<script>
+
+    var gamePin = "@Model"
+
+    $('body').append('<div id="table"></div>')
+
+</script>
+

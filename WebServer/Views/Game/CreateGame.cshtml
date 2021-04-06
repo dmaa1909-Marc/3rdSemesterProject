@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Lobby";
+}
+
+@Styles.Render("~/Content/GameStyle")
+@Styles.Render("~/Content/LobbyStyle")
+@*@Scripts.Render("~/bundles/game")*@
+
+
+
+<script>
+    $('body').append('<div id="table"></div>')
+</script>
+
+
+<div id="layer-mask">
+
+
+    <div class="menu-container">
+        <div class="container-logo">Decks</div>
+
+        <div class="container-content">
+
+            <div class="inner-container">
+
+
+
+                @using (Html.BeginForm("Create", "Game", new { @class = "decks-form", role = "form" })) {
+
+                    <div class="content-lbl">
+                        <label for="roomName" class="decks-lbl">Enter Room Name</label>
+                    </div>
+
+                    <div class="content-txt">
+                        @Html.TextBox("gamename", null, new { @class = "text-field", @placeholder = "Enter room name..." })
+                    </div>
+
+                    <div class="content-btn">
+                        <input type="submit" id="create-lobby-btn" class="decks-btn" value="Create Lobby" />
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+
+    <div id="suit-logo"></div>
+</div>
+
+

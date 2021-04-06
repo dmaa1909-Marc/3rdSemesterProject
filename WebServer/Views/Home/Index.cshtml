@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@Styles.Render("~/Content/LobbyStyle")
+
+<script>
+    $('body').append('<div id="table"></div>')
+</script>
+
+<div class="menu-container">
+    <div class="container-logo">Decks</div>
+    <a href="/game/creategame/" class="menu-bar">Play game</a>
+    @Html.Partial("_LoginPartial")
+    <a href="#" class="menu-bar">Settings</a>
+    <a href="#" class="menu-bar">Invite friends</a>
+    <a href="#" class="menu-bar">Rules & Terms</a>
+</div>
+
+<div id="suit-logo"></div>
+
+
+

@@ -1,0 +1,40 @@
+﻿@using Microsoft.AspNet.Identity
+@using Services
+@if(Request.IsAuthenticated) {
+
+
+    using(Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+        @Html.AntiForgeryToken()
+
+
+        <script type="text/javascript">
+
+            $('body').append('<div id="user" />')
+            $('#user').append($('<div id="user-image-container" />').append('<div id="user-image" class="Indigo" />'))
+            $('#user').append('<div id="user-name" />')            
+            $('#user-name').append(' @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "user-link", title = "Manage" })')
+
+                $.ajax({
+                    url: "/Account/UserImage/",
+                        type: "GET",
+                    dataType: "text",
+                    error: function (error) {
+                        console.log('Error!', error)
+                    },
+                    success: function (data) {
+                        var imageSrc = "data:image/png;base64," + data;
+                        $('#user-image').append('<img class="user-image" src="' + imageSrc + '" alt="">')
+                    }
+                });
+
+        </script>
+
+
+        <a class="menu-bar" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+
+    }
+}
+
+else {
+    @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "menu-bar" })
+}
